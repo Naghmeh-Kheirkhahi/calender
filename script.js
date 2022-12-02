@@ -8,22 +8,33 @@ let tableId = document.getElementById('tableId');
 
 let monthName = document.getElementById('monthName');
 
-let i = 0;
+
+let currentDate = new Date();
+
+
+// let i = 0;
+
 
 gofor.addEventListener ('click' , f =>{
-        monthName.innerHTML = months[++i];
+        let currentMonth = currentDate.getMonth();
+        currentDate.setMonth(currentMonth+1);
+        currentDate.setDate(1);
+        monthName.innerHTML = currentDate.getMonth();
 
-        if (i == 11) {
-            monthName.innerHTML = months[0];
-        }
+        // if (i == 11) {
+        //     monthName.innerHTML = months[0];
+        // }
 })
 
 goback.addEventListener ('click' , b =>{
-        monthName.innerHTML = months[--i];
+    let currentMonth = currentDate.getMonth();
+    currentDate.setMonth(currentMonth-1);
+    currentDate.setDate(1);
+    monthName.innerHTML = currentDate.getMonth();
 
-        if (i == 0) {
-            monthName.innerHTML = months[11];
-        }
+        // if (i == 0) {
+        //     monthName.innerHTML = months[11];
+        // }
 })
 
 initialMonth();
@@ -32,7 +43,7 @@ initialMonth();
 function initialMonth (){
 
     let start = 1;
-    let end = 8 - months[0].monthStart;
+    let end = 8 - currentDate.getDay();
     for (let index = 0; index < 6; index++) {
 
         let offset;
@@ -40,7 +51,7 @@ function initialMonth (){
             offset = 0;
         }
         else {
-            offset = months[0].monthStart -1;
+            offset = currentDate.getDay() -1;
         }
 
 
@@ -50,8 +61,8 @@ function initialMonth (){
         start = end + 1; 
         end = start + 6;
 
-        if (end > months[0].daysNum) {
-            end = months[0].daysNum;
+        if (end > months[currentDate.getMonth()].daysNum) {
+            end = months[currentDate.getMonth()].daysNum;
         }
     }
 }
