@@ -14,24 +14,16 @@ let currentDate = new Date();
 
 
 gofor.addEventListener ('click' , f =>{
-        let currentMonth = currentDate.getMonth();
-        currentDate.setMonth(currentMonth+1);
-        currentDate.setDate(1);
-        monthName.innerHTML = months[currentDate.getMonth()].monthName;
-        yearName.innerHTML = currentDate.getFullYear();
-
-        removeLastData();
-        initialMonth();
+    let currentMonth = currentDate.getMonth();
+    currentDate.setMonth(currentMonth+1);
+        
+    initialMonth();
 })
 
 goback.addEventListener ('click' , b =>{
     let currentMonth = currentDate.getMonth();
-    currentDate.setMonth(currentMonth-1);
-    currentDate.setDate(1);
-    monthName.innerHTML = months[currentDate.getMonth()].monthName;
-    yearName.innerHTML = currentDate.getFullYear();
+    currentDate.setMonth(currentMonth-1);    
 
-    removeLastData();
     initialMonth();
 })
 
@@ -39,6 +31,14 @@ initialMonth();
 
 
 function initialMonth(){
+    currentDate.setDate(1);
+
+    monthName.innerHTML = months[currentDate.getMonth()].monthName;
+    yearName.innerHTML = currentDate.getFullYear();
+
+    removeLastData();
+    
+
     let start = 1;
     let end = 8 - currentDate.getDay();
     for (let index = 0; index < 6; index++) {
