@@ -7,41 +7,38 @@ let gofor = document.getElementById('gofor');
 let tableId = document.getElementById('tableId');
 
 let monthName = document.getElementById('monthName');
-
+let yearName = document.getElementById('yearName');
 
 let currentDate = new Date();
 
-
-// let i = 0;
 
 
 gofor.addEventListener ('click' , f =>{
         let currentMonth = currentDate.getMonth();
         currentDate.setMonth(currentMonth+1);
         currentDate.setDate(1);
-        monthName.innerHTML = currentDate.getMonth();
+        monthName.innerHTML = months[currentDate.getMonth()].monthName;
+        yearName.innerHTML = currentDate.getFullYear();
 
-        // if (i == 11) {
-        //     monthName.innerHTML = months[0];
-        // }
+        removeLastData();
+        initialMonth();
 })
 
 goback.addEventListener ('click' , b =>{
     let currentMonth = currentDate.getMonth();
     currentDate.setMonth(currentMonth-1);
     currentDate.setDate(1);
-    monthName.innerHTML = currentDate.getMonth();
+    monthName.innerHTML = months[currentDate.getMonth()].monthName;
+    yearName.innerHTML = currentDate.getFullYear();
 
-        // if (i == 0) {
-        //     monthName.innerHTML = months[11];
-        // }
+    removeLastData();
+    initialMonth();
 })
 
 initialMonth();
 
 
-function initialMonth (){
-
+function initialMonth(){
     let start = 1;
     let end = 8 - currentDate.getDay();
     for (let index = 0; index < 6; index++) {
@@ -68,9 +65,21 @@ function initialMonth (){
 }
 
 
+function removeLastData(){
+
+    let temp = tableId.querySelectorAll(".temp");
+    for (let index = 0; index < temp.length; index++) {
+        tableId.removeChild(temp[index]);
+        
+    }
+    
+}
+
+
 function initialWeek (start , end , offset){
     
     const tr = document.createElement('tr');
+    tr.className = 'temp';
 
     for (let index = 0; index < offset; index++) {
         const td = document.createElement('td');
