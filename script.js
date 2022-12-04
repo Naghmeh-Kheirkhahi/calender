@@ -1,4 +1,4 @@
-const months = [{monthName:'January' , monthStart: 7, daysNum: 31}, {monthName: 'February' , monthStart: 3, daysNum: 28}, {monthName: 'March' , monthStart: 3, daysNum: 31}, {monthName: 'April' , monthStart: 6, daysNum: 30}, {monthName: 'May' , monthStart: 1, daysNum: 31}, {monthName: 'June' , monthStart: 4, daysNum: 30}, {monthName: 'July' , monthStart: 6, daysNum: 31}, {monthName: 'August' , monthStart: 2, daysNum: 31}, {monthName: 'September' , monthStart: 5, daysNum: 30}, {monthName: 'October' , monthStart: 7, daysNum: 31}, {monthName: 'November' , monthStart: 3, daysNum: 30}, {monthName: 'December' , monthStart: 5, daysNum: 31}];
+const months = [{monthName:'January' , daysNum: 31}, {monthName: 'February' , daysNum: 28}, {monthName: 'March' , daysNum: 31}, {monthName: 'April' , daysNum: 30}, {monthName: 'May' , daysNum: 31}, {monthName: 'June' , daysNum: 30}, {monthName: 'July' , daysNum: 31}, {monthName: 'August' , daysNum: 31}, {monthName: 'September' , daysNum: 30}, {monthName: 'October' , daysNum: 31}, {monthName: 'November' , daysNum: 30}, {monthName: 'December' , daysNum: 31}];
 const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 let goback = document.getElementById('goback');
@@ -8,10 +8,13 @@ let tableId = document.getElementById('tableId');
 
 let monthName = document.getElementById('monthName');
 let yearName = document.getElementById('yearName');
+let specifiedDay = document.getElementById('specifiedDay');
+
 
 let currentDate = new Date();
 
 
+// showCurrentDate();
 
 gofor.addEventListener ('click' , f =>{
     let currentMonth = currentDate.getMonth();
@@ -34,7 +37,7 @@ function initialMonth(){
     currentDate.setDate(1);
 
     monthName.innerHTML = months[currentDate.getMonth()].monthName;
-    yearName.innerHTML = currentDate.getFullYear();
+    yearName.innerHTML = ', ' + currentDate.getFullYear();
 
     removeLastData();
     
@@ -70,7 +73,6 @@ function removeLastData(){
     let temp = tableId.querySelectorAll(".temp");
     for (let index = 0; index < temp.length; index++) {
         tableId.removeChild(temp[index]);
-        
     }
     
 }
@@ -94,3 +96,18 @@ function initialWeek (start , end , offset){
 
     return tr;
 }
+
+
+// function showCurrentDate(){
+//     let currentDay = currentDate.getDay();
+//     let currentMonth = currentDate.getMonth();
+//     let currentYear = currentDate.getFullYear();
+
+//     if (yearName.innerText === currentYear && 
+//         months[currentDate.getMonth()].monthName === currentMonth &&  
+//         td.innerText === currentDay) {
+        
+//         td.style.color = 'red';
+//     }
+// }
+
