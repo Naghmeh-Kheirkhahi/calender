@@ -111,3 +111,14 @@ function initialWeek (start , end , offset){
 //     }
 // }
 
+
+
+
+// td.addEventListener ('click' , f =>{
+//     td.style.border = '1px solid rgb(255, 145, 0)';
+//     td.style.borderRadius = '5px';
+//     td.style.backgroundColor = 'rgb(255, 145, 0)';
+//     td.style.fontWeight = 'bold';
+
+//     specifiedDay.innerHTML = td.innerHTML;
+// })
