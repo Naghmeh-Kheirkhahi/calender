@@ -14,7 +14,6 @@ let specifiedDay = document.getElementById('specifiedDay');
 let currentDate = new Date();
 
 
-// showCurrentDate();
 
 gofor.addEventListener ('click' , f =>{
     let currentMonth = currentDate.getMonth();
@@ -43,7 +42,8 @@ function initialMonth(){
     
 
     let start = 1;
-    let end = 8 - currentDate.getDay();
+    let end = 7 - currentDate.getDay(); //this is 8 - (currentDate.getDay() +1) because the array showing the number of days starts with 0, so the fifth day has number 4. 
+
     for (let index = 0; index < 6; index++) {
 
         let offset;
@@ -51,7 +51,7 @@ function initialMonth(){
             offset = 0;
         }
         else {
-            offset = currentDate.getDay() -1;
+            offset = currentDate.getDay(); // because the array showing the number of days starts with 0, the number of the first day in the array is equal to offset.
         }
 
 
@@ -90,7 +90,7 @@ function initialWeek (start , end , offset){
 
     for (let index = start; index < end+1 ; index++) {
         const td = document.createElement('td');
-        td.innerHTML = index;
+        td.innerText = index;
         tr.appendChild(td);
     }
 
