@@ -10,7 +10,6 @@ let monthName = document.getElementById('monthName');
 let yearName = document.getElementById('yearName');
 let specifiedDay = document.getElementById('specifiedDay');
 
-
 let currentDate = new Date();
 
 
@@ -79,7 +78,12 @@ function removeLastData(){
 
 
 function initialWeek (start , end , offset){
-    
+
+    let today = new Date();
+    let currentDay = today.getDate();
+    let currentMonth = today.getMonth();
+    let currentYear = today.getFullYear();
+
     const tr = document.createElement('tr');
     tr.className = 'temp';
 
@@ -88,37 +92,38 @@ function initialWeek (start , end , offset){
         tr.appendChild(td);
     }
 
+
     for (let index = start; index < end+1 ; index++) {
         const td = document.createElement('td');
         td.innerText = index;
         tr.appendChild(td);
+
+        // console.log('----------------');
+        // console.log(yearName.innerText);
+        // console.log(currentYear);
+        // console.log(monthName.innerText);
+        // console.log(months[currentMonth].monthName);
+        // console.log(index);
+        // console.log(currentDay);
+
+        if (yearName.innerText === ', ' + currentYear && 
+            monthName.innerText === months[currentMonth].monthName &&  
+            index === currentDay) {
+            
+            td.style.color = 'red';
+        }
     }
 
     return tr;
 }
 
 
-// function showCurrentDate(){
-//     let currentDay = currentDate.getDay();
-//     let currentMonth = currentDate.getMonth();
-//     let currentYear = currentDate.getFullYear();
 
-//     if (yearName.innerText === currentYear && 
-//         months[currentDate.getMonth()].monthName === currentMonth &&  
-//         td.innerText === currentDay) {
-        
-//         td.style.color = 'red';
-//     }
-// }
+tableId.td.addEventListener ('click' , t =>{
+    td.style.border = '1px solid rgb(255, 145, 0)';
+    td.style.borderRadius = '5px';
+    td.style.backgroundColor = 'rgb(255, 145, 0)';
+    td.style.fontWeight = 'bold';
 
-
-
-
-// td.addEventListener ('click' , f =>{
-//     td.style.border = '1px solid rgb(255, 145, 0)';
-//     td.style.borderRadius = '5px';
-//     td.style.backgroundColor = 'rgb(255, 145, 0)';
-//     td.style.fontWeight = 'bold';
-
-//     specifiedDay.innerHTML = td.innerHTML;
-// })
+    specifiedDay.innerText = tableId.td.innerText;
+})
