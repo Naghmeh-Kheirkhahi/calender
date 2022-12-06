@@ -15,6 +15,7 @@ let currentDate = new Date();
 
 
 gofor.addEventListener ('click' , f =>{
+
     let currentMonth = currentDate.getMonth();
     currentDate.setMonth(currentMonth+1);
         
@@ -34,8 +35,8 @@ initialMonth();
 function initialMonth(){
     currentDate.setDate(1);
 
-    monthName.innerHTML = months[currentDate.getMonth()].monthName;
-    yearName.innerHTML = ', ' + currentDate.getFullYear();
+    monthName.innerText = months[currentDate.getMonth()].monthName;
+    yearName.innerText = currentDate.getFullYear();
 
     removeLastData();
     
@@ -98,19 +99,12 @@ function initialWeek (start , end , offset){
         td.innerText = index;
         tr.appendChild(td);
 
-        // console.log('----------------');
-        // console.log(yearName.innerText);
-        // console.log(currentYear);
-        // console.log(monthName.innerText);
-        // console.log(months[currentMonth].monthName);
-        // console.log(index);
-        // console.log(currentDay);
-
-        if (yearName.innerText === ', ' + currentYear && 
+        if (yearName.innerText == currentYear && 
             monthName.innerText === months[currentMonth].monthName &&  
-            index === currentDay) {
+            index === currentDay) { // == means string and number are the same but === means both sides must be numbers or strings.
             
             td.style.color = 'red';
+            td.style.fontWeight = 'bolder'
         }
 
         td.addEventListener ('click' , t =>{
@@ -121,7 +115,7 @@ function initialWeek (start , end , offset){
             }
 
             td.classList.add('click-specified-date'); // classList mese list bahash raftar mishe eine array hast. className be esm kar dare.
-            specifiedDay.innerText = td.innerText;
+            specifiedDay.innerHTML = td.innerHTML;
 
             
         })

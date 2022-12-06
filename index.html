@@ -18,8 +18,9 @@
             <div class="calender-title-class col-11 display-flex space-between">
                 <div class="display-flex">
                     <p id="monthName"></p>
-                    <p id="specifiedDay"></p>
-                    <p style="margin-left: 20px;" id="yearName"></p>
+                    <p style="margin-left: 10px;" id="specifiedDay"></p>
+                    <p>,</p>
+                    <p style="margin-left: 10px;" id="yearName"></p>
                 </div>
                 <div>
                     <i class="fa-solid fa-angle-left" id="goback"></i>                    
@@ -134,8 +135,8 @@
 
     .calender-table-class td{
         font-size: medium;
-        padding: 20px;
-        color: rgb(65, 65, 65);
+        padding-top: 25px;
+        padding-bottom: 25px;
     }
 
     .calender-table-class td:hover{
@@ -144,9 +145,10 @@
 
     .click-specified-date {
         border: 1px solid rgb(255, 145, 0) ;
-        border-radius: 5px;
+        border-radius: 40px;
         background-color: rgb(255, 145, 0);
-        font-weight: bold;
+        font-weight: bolder;
+        color: rgb(28, 46, 140);
     }
 
 
