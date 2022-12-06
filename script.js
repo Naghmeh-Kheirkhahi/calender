@@ -112,18 +112,20 @@ function initialWeek (start , end , offset){
             
             td.style.color = 'red';
         }
+
+        td.addEventListener ('click' , t =>{
+
+            let spDate = tableId.querySelectorAll(".click-specified-date");
+            for (let index = 0; index < spDate.length; index++) {
+                spDate[index].classList.remove('click-specified-date');
+            }
+
+            td.classList.add('click-specified-date'); // classList mese list bahash raftar mishe eine array hast. className be esm kar dare.
+            specifiedDay.innerText = td.innerText;
+
+            
+        })
     }
 
     return tr;
 }
-
-
-
-tableId.td.addEventListener ('click' , t =>{
-    td.style.border = '1px solid rgb(255, 145, 0)';
-    td.style.borderRadius = '5px';
-    td.style.backgroundColor = 'rgb(255, 145, 0)';
-    td.style.fontWeight = 'bold';
-
-    specifiedDay.innerText = tableId.td.innerText;
-})
