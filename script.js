@@ -18,14 +18,15 @@ gofor.addEventListener ('click' , f =>{
 
     let currentMonth = currentDate.getMonth();
     currentDate.setMonth(currentMonth+1);
-        
+
     initialMonth();
 })
 
 goback.addEventListener ('click' , b =>{
-    let currentMonth = currentDate.getMonth();
-    currentDate.setMonth(currentMonth-1);    
 
+    let currentMonth = currentDate.getMonth();
+    currentDate.setMonth(currentMonth-1);  
+    
     initialMonth();
 })
 
@@ -101,7 +102,7 @@ function initialWeek (start , end , offset){
 
         if (yearName.innerText == currentYear && 
             monthName.innerText === months[currentMonth].monthName &&  
-            index === currentDay) { // == means string and number are the same but === means both sides must be numbers or strings.
+            index === currentDay) { // == means string and number are the same but === means both sides must be numbers or strings. string + number = string
             
             td.style.color = 'red';
             td.style.fontWeight = 'bolder'
