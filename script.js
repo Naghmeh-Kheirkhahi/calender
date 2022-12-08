@@ -17,20 +17,42 @@ let currentDate = new Date();
 gofor.addEventListener ('click' , f =>{
 
     let currentMonth = currentDate.getMonth();
-    currentDate.setMonth(currentMonth+1);
+    nextMonth = currentMonth + 1 ;
+    currentDate.setMonth(nextMonth);
 
     initialMonth();
+
+    if (yearName.innerText == currentDate.getFullYear() &&
+        monthName.innerText === months[currentMonth].monthName) {
+        
+        specifiedDay.style.display = 'flex';
+    }
+    else {
+        specifiedDay.style.display = 'none';
+    }
 })
 
 goback.addEventListener ('click' , b =>{
 
     let currentMonth = currentDate.getMonth();
-    currentDate.setMonth(currentMonth-1);  
+    lastMonth = currentMonth - 1 ;
+    currentDate.setMonth(lastMonth);  
     
     initialMonth();
+
+    if (yearName.innerText == currentDate.getFullYear() &&
+        monthName.innerText === months[currentMonth].monthName) {
+        
+        specifiedDay.style.display = 'flex';
+    }
+    else {
+        specifiedDay.style.display = 'none';
+    }
 })
 
+
 initialMonth();
+
 
 
 function initialMonth(){
@@ -115,12 +137,13 @@ function initialWeek (start , end , offset){
                 spDate[index].classList.remove('click-specified-date');
             }
 
-            td.classList.add('click-specified-date'); // classList mese list bahash raftar mishe eine array hast. className be esm kar dare.
-            specifiedDay.innerHTML = td.innerHTML;
-
-            
+            td.classList.add('click-specified-date'); // classi ro be classhaye td add mikonim. classList mese list bahash raftar mishe eine array hast. className be esm kar dare.
+            specifiedDay.style.display = 'flex';
+            specifiedDay.innerText = td.innerText;
         })
     }
 
     return tr;
 }
+
+
