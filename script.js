@@ -12,42 +12,28 @@ let specifiedDay = document.getElementById('specifiedDay');
 
 let currentDate = new Date();
 
+const selectedDay = {year: '' , month: '' , day: ''};
+
 
 
 gofor.addEventListener ('click' , f =>{
 
     let currentMonth = currentDate.getMonth();
-    nextMonth = currentMonth + 1 ;
-    currentDate.setMonth(nextMonth);
+    currentDate.setMonth(currentMonth + 1);
+
+    specifiedDay.style.display = 'none';
 
     initialMonth();
-
-    if (yearName.innerText == currentDate.getFullYear() &&
-        monthName.innerText === months[currentMonth].monthName) {
-        
-        specifiedDay.style.display = 'flex';
-    }
-    else {
-        specifiedDay.style.display = 'none';
-    }
 })
 
 goback.addEventListener ('click' , b =>{
 
     let currentMonth = currentDate.getMonth();
-    lastMonth = currentMonth - 1 ;
-    currentDate.setMonth(lastMonth);  
+    currentDate.setMonth(currentMonth - 1);  
     
-    initialMonth();
+    specifiedDay.style.display = 'none';
 
-    if (yearName.innerText == currentDate.getFullYear() &&
-        monthName.innerText === months[currentMonth].monthName) {
-        
-        specifiedDay.style.display = 'flex';
-    }
-    else {
-        specifiedDay.style.display = 'none';
-    }
+    initialMonth();
 })
 
 
@@ -130,6 +116,17 @@ function initialWeek (start , end , offset){
             td.style.fontWeight = 'bolder'
         }
 
+
+        if (selectedDay.year == yearName.innerText && 
+            selectedDay.month === monthName.innerText &&  
+            index == selectedDay.day) { // == means string and number are the same but === means both sides must be numbers or strings. string + number = string
+            
+            td.classList.add('click-specified-date'); // classi ro be classhaye td add mikonim. classList mese list bahash raftar mishe eine array hast. className be esm kar dare.
+            specifiedDay.style.display = 'flex';
+            specifiedDay.innerText = td.innerText;
+        }
+
+
         td.addEventListener ('click' , t =>{
 
             let spDate = tableId.querySelectorAll(".click-specified-date");
@@ -140,6 +137,10 @@ function initialWeek (start , end , offset){
             td.classList.add('click-specified-date'); // classi ro be classhaye td add mikonim. classList mese list bahash raftar mishe eine array hast. className be esm kar dare.
             specifiedDay.style.display = 'flex';
             specifiedDay.innerText = td.innerText;
+
+            selectedDay.year = yearName.innerText;
+            selectedDay.month = monthName.innerText;
+            selectedDay.day = specifiedDay.innerText;
         })
     }
 
